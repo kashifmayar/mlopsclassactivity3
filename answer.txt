@@ -1,0 +1,32 @@
+cat > answer.txt << 'EOF'
+Discussion Questions Answers
+=============================
+
+1. How does CI/CD improve collaboration in ML teams?
+---------------------------------------------------
+CI/CD automates repetitive tasks like testing, training, and model evaluation. 
+It ensures that all members work on consistent and tested codebases. 
+This reduces manual errors, enables faster iteration, and increases transparency within ML teams.
+
+2. What happens if the evaluation score is below a defined threshold?
+--------------------------------------------------------------------
+If the evaluation score falls below the threshold, the pipeline can automatically fail 
+or block the merge/deployment process. This prevents underperforming models from being deployed to production.
+
+3. How can retraining or drift detection be integrated into this workflow?
+-------------------------------------------------------------------------
+Retraining or drift detection can be integrated by scheduling additional workflow triggers 
+(e.g., daily or weekly) that check new incoming data or model performance metrics. 
+If data drift or performance degradation is detected, the workflow can automatically 
+start the retraining process using the same CI/CD steps.
+
+4. What steps are needed to deploy this workflow to production (e.g., AWS, Kubernetes)?
+--------------------------------------------------------------------------------------
+To deploy to production, the following steps are needed:
+- Create a Docker image using Dockerfile.serve and push it to a Docker registry.
+- Configure a deployment job in the workflow to deploy the image to AWS ECS, GCP, or Kubernetes.
+- Store cloud credentials and secrets securely in GitHub Actions.
+- Optionally add a manual approval or CD (Continuous Deployment) stage after the CI process passes.
+
+
+1. GitHub repository link: https://github.com/kashifmayar/mlops-ci-activity
